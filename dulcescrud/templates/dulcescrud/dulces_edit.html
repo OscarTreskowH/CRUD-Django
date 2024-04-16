@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Document</title>
+  </head>
+  
+  <body>
+    <div class="container-fluid">
+        <form action="{% url 'dulces_agregar' %}" method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label>codigo</label>
+                    <input type="text" name="codigoD" class="form-control" value="{{producto.codigoD}}" readonly>
+                </div>
+                <div class="form-group col-md-4">            
+                    <label">nombre producto</label>
+                    <input type="text" name="nombreD" class="form-control" value="{{producto.nombreD}}">
+                </div>
+                <div class="form-group col-md-4">
+                    <label>cantidad</label>
+                    <select name="cantidad" class="form-control" value="{{producto.cantidad}}">
+                        <option value="seleccione cantidad" selected>seleccione cantidad</option>
+                        <option value="150g">150g</option>
+                        <option value="500g">500g</option>
+                        <option value="1k">1k</option>
+                        <option value="5 personas">5 personas</option>
+                        <option value="10 personas">10 personas</option>
+                        <option value="15 personas">15 personas</option>
+                        <option value="20 personas">20 personas</option>
+                        <option value="25 personas">25 personas</option>
+                        <option value="30 personas">30 personas</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>precio</label>
+                    <input type="number" name="precioD" class="form-control" value="{{producto.precioD}}">
+                </div>
+                <div class="form-group col-md-4">
+                    <label>ingrediente principal</label>
+                    <input type="text" name="ingredienteP" class="form-control" value="{{producto.ingredienteP}}">
+                </div>
+                <div class="form-group col-md-4">
+                    <label>email de contacto</label>
+                    <input type="email" name="correo" class="form-control" value="{{producto.correo}}">
+                </div>
+                <div class="form-group col-md-4">
+                    <label>descripcion producto</label>
+                    <textarea name="descripcion" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>fecha envio</label>
+                    <input type="date" name="fecha" class="form-control" value="{{producto.fecha}}">
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" name="opc" value="actualizar" class="btn btn-success">
+                <input type="submit" name="opc" value="Atras" class="btn btn-danger">
+            </div>
+            <div id="idMensajes">
+                {% if mensaje %}
+                    {{mensaje}}
+                {% endif%}
+            </div>
+        </form>
+    </div>
+
+        
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
